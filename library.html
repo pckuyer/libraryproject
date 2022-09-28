@@ -15,5 +15,30 @@
 </head>
 <body>
 	<h1>This is a library project</h1>
+	<h2>Add new book</h2>
+
+	<form action="">
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title">
+		<label for="author">Author:</label>
+		<input type="text" id="author" name="author">
+		<label for="pages">Number of pages:</label>
+		<input type="number" min=0 step=1 id="pages" name="pages">
+
+		<p>Have you read this book?</p>
+
+		<input type="radio" id="yes" value="yes" name="readStatus">
+		<label for="yes">Yes</label>
+		<input type="radio" id="no" value="no" name="readStatus">
+		<label for="no">No</label>
+
+		<input type="submit">
+	</form>
+
+
+
+
+	<h2>Books:</h2>
+	<div id="emptyBox"></div>
 </body>
 </html>

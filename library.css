@@ -2,3 +2,8 @@
 h1 	{
 	color: 	green;
 }
+
+.book_card {
+	background-color: grey;
+	margin: 10px;
+}
