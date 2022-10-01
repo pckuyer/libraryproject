@@ -27,20 +27,46 @@ addBookToLibrary(harryPotter);
 addBookToLibrary(nijntje);
 
 
+function createNewBookCard(book){
+	let emptyBox = document.getElementById('emptyBox');
+	const para = document.createElement('div');
+	para.classList.add('book_card')
+	const text = document.createTextNode(book.info());
+	para.appendChild(text);
+	emptyBox.appendChild(para);
+}
+
+
+
+function addBookFunction() {
+	title = document.getElementById('bookTitleInputField').value.trim();
+	author = document.getElementById('bookAuthorInputField').value.trim();
+	numberOfPages = document.getElementById('bookPagesInputField').value;
+	readStatus = document.querySelector('input[name="readStatus"]:checked').value;
+	
+	if (title && author && numberOfPages && readStatus) {
+		const book = new Book(title, author, numberOfPages, readStatus);
+		addBookToLibrary(book);
+		// createNewBookCard(book); //this does not work yet due to no storage
+	}
+}
+
 
 
 
 //waiting for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-	//selecting the empty box
-	let emptyBox = document.getElementById('emptyBox');
 	//placing text on the page. (Should this be placed in a function???)
 	for (let i = 0; i< myLibrary.length; i++){
-		var para = document.createElement('div');
-		para.classList.add('book_card')
-		var text = document.createTextNode(myLibrary[i].info());
-		para.appendChild(text);
-		emptyBox.appendChild(para);
+		// execute function createNewBookCard
+		createNewBookCard(myLibrary[i]);
 	}
+
+
+	//selector for button
+	let addBookToLibraryButton = document.getElementById('addBookToLibraryButton');
+	addBookToLibraryButton.addEventListener("click", addBookFunction);
+
+
 
 });

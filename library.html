@@ -18,21 +18,21 @@
 	<h2>Add new book</h2>
 
 	<form action="">
-		<label for="title">Title:</label>
-		<input type="text" id="title" name="title">
-		<label for="author">Author:</label>
-		<input type="text" id="author" name="author">
-		<label for="pages">Number of pages:</label>
-		<input type="number" min=0 step=1 id="pages" name="pages">
+		<label for="bookTitleInputField">Title:</label>
+		<input type="text" id="bookTitleInputField" name="bookTitleInputField" required="required">
+		<label for="bookAuthorInputField">Author:</label>
+		<input type="text" id="bookAuthorInputField" name="bookAuthorInputField" required="required">
+		<label for="bookPagesInputField">Number of Pages:</label>
+		<input type="number" min=0 step=1 id="bookPagesInputField" name="bookPagesInputField" required="required">
 
 		<p>Have you read this book?</p>
 
-		<input type="radio" id="yes" value="yes" name="readStatus">
+		<input type="radio" id="yes" value="read" name="readStatus" required="required">
 		<label for="yes">Yes</label>
-		<input type="radio" id="no" value="no" name="readStatus">
+		<input type="radio" id="no" value="not yet read" name="readStatus" required="required">
 		<label for="no">No</label>
 
-		<input type="submit">
+		<input type="submit" id="addBookToLibraryButton">
 	</form>
 
 
