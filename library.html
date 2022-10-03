@@ -9,32 +9,39 @@
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="./library.css">	
 
+	<!-- Icons stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<!-- JS file -->
 	<script type="text/javascript" src="library.js"></script>
 
 </head>
 <body>
-	<h1>This is a library project</h1>
-	<h2>Add new book</h2>
+	<h1 id="paul">This is a library project</h1>
+	<button id="newBookButton">Add new book</button>
 
-	<form action="">
-		<label for="bookTitleInputField">Title:</label>
-		<input type="text" id="bookTitleInputField" name="bookTitleInputField" required="required">
-		<label for="bookAuthorInputField">Author:</label>
-		<input type="text" id="bookAuthorInputField" name="bookAuthorInputField" required="required">
-		<label for="bookPagesInputField">Number of Pages:</label>
-		<input type="number" min=0 step=1 id="bookPagesInputField" name="bookPagesInputField" required="required">
+	<div id="formWrapper">
+		<h3>New book</h3>
+		<form action="javascript:void(0);" class="createNewBookForm">
+			<label for="bookTitleInputField">Title:</label>
+			<input type="text" id="bookTitleInputField" name="bookTitleInputField" required="required">
+			<br>
+			<label for="bookAuthorInputField">Author:</label>
+			<input type="text" id="bookAuthorInputField" name="bookAuthorInputField" required="required">
+			<br>
+			<label for="bookPagesInputField">Number of Pages:</label>
+			<input type="number" min=0 step=1 id="bookPagesInputField" name="bookPagesInputField" required="required">
+			<br>
+			<p>Have you read this book?</p>
 
-		<p>Have you read this book?</p>
-
-		<input type="radio" id="yes" value="read" name="readStatus" required="required">
-		<label for="yes">Yes</label>
-		<input type="radio" id="no" value="not yet read" name="readStatus" required="required">
-		<label for="no">No</label>
-
-		<input type="submit" id="addBookToLibraryButton">
-	</form>
-
+			<input type="radio" id="yes" value="read" name="readStatus" required="required">
+			<label for="yes">Yes</label>
+			<input type="radio" id="no" value="not yet read" name="readStatus" required="required">
+			<label for="no">No</label>
+			<br>
+			<input type="submit" id="addBookToLibraryButton">
+		</form>
+	</div>
 
 
 
