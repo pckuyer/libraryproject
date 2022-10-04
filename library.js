@@ -10,16 +10,28 @@ Book.prototype.info = function(){
 };
 
 
+
+
+
+
 function createNewBookCard(book){
 	let emptyBox = document.getElementById('emptyBox');
 	
 	const para = document.createElement('div');
 	para.classList.add('book_card')
-	const text = document.createTextNode(`${book.title}, by ${book.author}. ${book.pages}`);
-	para.appendChild(text);
+	const text = [book.title, book.author, `${book.pages} pages`];
+
+	const docFrag = document.createDocumentFragment()
+	for(i = 0; i < text.length; i++){
+		let elem = document.createElement("p");
+		elem.appendChild(document.createTextNode(text[i]));
+		docFrag.appendChild(elem);
+	};
+
+	para.appendChild(docFrag);
 	
-	const removeBtnContainer = document.createElement('div');
-	removeBtnContainer.innerHTML = '<i class="fa fa-trash-o removebtn"></i>';
+	const removeBtnContainer = document.createElement('i');
+	removeBtnContainer.classList.add('fa', 'fa-trash-o', 'removebtn')
 	removeBtnContainer.addEventListener('click', removeBookCard);
 	para.appendChild(removeBtnContainer);
 	
@@ -31,7 +43,9 @@ function createNewBookCard(book){
 		bookIconContainer.innerHTML = 'not yet read';		
 		bookIconContainer.classList.add('thisBookHasNotYetBeenRead');
 	}
+	
 	bookIconContainer.addEventListener('click', changeBookReadStatus);
+
 
 	para.appendChild(bookIconContainer);
 	
@@ -39,7 +53,11 @@ function createNewBookCard(book){
 }
 
 function removeBookCard(){
-	event.target.parentElement.parentElement.remove();
+	const element = event.target;
+	element.parentElement.style.animation = 'fading 1s 1';
+	setTimeout(() => {
+		element.parentElement.remove();
+	}, "1000")
 }
 
 
@@ -59,8 +77,14 @@ function addBookFunction() {
 
 function showNewBookForm() {
 	document.getElementById('formWrapper').style.display = "inline";
+	document.querySelector(".createNewBookForm").reset();
+	document.querySelector(".fa-times").addEventListener('click', hideNewBookForm);
+	document.querySelector(".createNewBookForm").querySelector("input").focus().select();
 }
 
+function hideNewBookForm() {
+	document.getElementById('formWrapper').style.display = "none";
+}
 
 function changeBookReadStatus() {
 	if (event.target.classList.contains("thisBookHasBeenRead")) {
@@ -84,13 +108,27 @@ document.addEventListener('DOMContentLoaded', function() {
 	let addBookToLibraryButton = document.getElementById('addBookToLibraryButton');
 	addBookToLibraryButton.addEventListener("click", addBookFunction);
 
+const harrypotter = new Book("Harry Potter", "J.K. Rolling", 333, "not yet read");
+createNewBookCard(harrypotter);
 
+const harrypotter2 = new Book("Harry Potter 2", "J.K. Rolling", 433, "read");
+createNewBookCard(harrypotter2);
 
+const harrypotter3 = new Book("Harry Potter 3", "J.K. Rolling", 533, "not yet read");
+createNewBookCard(harrypotter3); 
 
-	//selector for changing read status button
-	// let readStatusBtns = document.querySelectorAll('.thisBookHasBeenRead, .thisBookHasNotYetBeenRead');
-	// for (var i = 0; i < readStatusBtns.length; i++) {
- //    	readStatusBtns[i].addEventListener('click', changeBookReadStatus);
-	// }
+const harrypotter4 = new Book("Harry Potter 4", "J.K. Rolling", 533, "not yet read");
+createNewBookCard(harrypotter3); 
+
+const harrypotter5 = new Book("Harry Potter 5", "J.K. Rolling", 533, "not yet read");
+createNewBookCard(harrypotter3); 
+
+const harrypotter6 = new Book("Harry Potter 6", "J.K. Rolling", 533, "not yet read");
+createNewBookCard(harrypotter3); 
+
+const harrypotter7 = new Book("Harry Potter 7", "J.K. Rolling", 533, "not yet read");
+createNewBookCard(harrypotter3); 
+
 
 });
+
