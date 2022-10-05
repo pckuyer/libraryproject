@@ -54,7 +54,7 @@ function createNewBookCard(book){
 
 function removeBookCard(){
 	const element = event.target;
-	element.parentElement.style.animation = 'fading 1s 1';
+	element.parentElement.style.animation = 'fading 1.1s 1';
 	setTimeout(() => {
 		element.parentElement.remove();
 	}, "1000")
@@ -70,8 +70,11 @@ function addBookFunction() {
 	if (title && author && numberOfPages && readStatus) {
 		const book = new Book(title, author, numberOfPages, readStatus);
 		createNewBookCard(book); 
+		const myArray = document.querySelectorAll('.book_card');
+		myArray[myArray.length -1].style.animation = 'appearing 1s 1';
 		document.querySelector(".createNewBookForm").reset();
 		document.getElementById('formWrapper').style.display = "none";
+		window.scrollTo({ top: document.getElementById('emptyBox').scrollHeight, behavior: 'smooth' });
 	}
 }
 
@@ -79,6 +82,13 @@ function showNewBookForm() {
 	document.getElementById('formWrapper').style.display = "inline";
 	document.querySelector(".createNewBookForm").reset();
 	document.querySelector(".fa-times").addEventListener('click', hideNewBookForm);
+
+	document.querySelector("#formWrapper").addEventListener('click', e => {
+		if(e.target === e.currentTarget){
+			hideNewBookForm();
+			}
+		});
+
 	document.querySelector(".createNewBookForm").querySelector("input").focus().select();
 }
 
@@ -118,16 +128,16 @@ const harrypotter3 = new Book("Harry Potter 3", "J.K. Rolling", 533, "not yet re
 createNewBookCard(harrypotter3); 
 
 const harrypotter4 = new Book("Harry Potter 4", "J.K. Rolling", 533, "not yet read");
-createNewBookCard(harrypotter3); 
+createNewBookCard(harrypotter4); 
 
 const harrypotter5 = new Book("Harry Potter 5", "J.K. Rolling", 533, "not yet read");
-createNewBookCard(harrypotter3); 
+createNewBookCard(harrypotter5); 
 
 const harrypotter6 = new Book("Harry Potter 6", "J.K. Rolling", 533, "not yet read");
-createNewBookCard(harrypotter3); 
+createNewBookCard(harrypotter6); 
 
 const harrypotter7 = new Book("Harry Potter 7", "J.K. Rolling", 533, "not yet read");
-createNewBookCard(harrypotter3); 
+createNewBookCard(harrypotter7); 
 
 
 });
